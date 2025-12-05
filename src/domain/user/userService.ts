@@ -17,7 +17,8 @@ export class AuthDomainService {
     return this.ps.verify(passwordHash, password);
   };
 
-  createNewUser = (name: string, email: string, password: string) => {
-    return this.repo.create({ email, passwordHash: password, name });
+  createNewUser = async (name: string, email: string, password: string) => {
+    const passwordHash = await this.ps.hash(password);
+    return this.repo.create({ email, passwordHash, name });
   };
 }
