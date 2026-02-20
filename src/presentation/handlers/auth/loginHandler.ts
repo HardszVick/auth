@@ -40,6 +40,6 @@ export const loginHandler = async (
     .code(200)
     .send({
       success: true,
-      data: { user: userResponse },
+      data: userResponse,
     });
 };
